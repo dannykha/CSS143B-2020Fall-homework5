@@ -34,8 +34,9 @@ public class Problem3Test {
 
     @Test
     public void testInOrderTraverse() {
-        // homework
-        // to verify inOrderTraverse(TreeNode<Integer> node)
+        List<Integer> result = new ArrayList<>();
+
+
     }
 
     private static List<Integer> inOrderTraverse(TreeNode<Integer> node) {
