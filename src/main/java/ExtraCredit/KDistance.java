@@ -20,25 +20,25 @@ public class KDistance {
         return result;
     }
 
-    private static int distanceMaker(List<Integer> result, TreeNode<Integer> root, int target, int k, int depth) {
+    private static int distanceMaker(List<Integer> result, TreeNode<Integer> root, int target, int k, int distance) {
         if (root == null) { // 0 distance
             return 0;
         }
 
-        if (depth == k) { // 0 distance
+        if (distance == k) { // 0 distance
             result.add(root.val);
             return 0;
         }
 
         int left, right;
 
-        if (root.val == target || depth > 0) {
-            left = distanceMaker(result, root.left, target, k, depth + 1);
-            right = distanceMaker(result, root.right, target, k, depth + 1);
+        if (root.val == target || distance > 0) {
+            left = distanceMaker(result, root.left, target, k, distance + 1);
+            right = distanceMaker(result, root.right, target, k, distance + 1);
         }
         else {
-            left = distanceMaker(result, root.left, target, k, depth);
-            right = distanceMaker(result, root.right, target, k, depth);
+            left = distanceMaker(result, root.left, target, k, distance);
+            right = distanceMaker(result, root.right, target, k, distance);
         }
 
         if (root.val == target) {
