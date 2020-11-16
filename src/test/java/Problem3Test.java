@@ -36,7 +36,7 @@ public class Problem3Test {
     public void testInOrderTraverse() {
         List<BSTTestCase<Integer>> testCases = getBSTTestCases();
 
-        int[][] expected = {
+        int[][] expectedd = {
                 {1},
                 {1},
                 {1},
@@ -59,8 +59,18 @@ public class Problem3Test {
         for (int i = 0; i < testCases.size(); i++) {
             BSTTestCase<Integer> testCase = testCases.get(i);
             List<Integer> actual = inOrderTraverse(testCase.tree);
-            assertEquals(Arrays.asList(expected[i]), actual);
+            String expected = listBoi(expectedd, i);
+            assertEquals(expected, actual.toString());
         }
+    }
+
+    private String listBoi(int[][] expected, int row) {
+        String result = "[";
+        for (int i = 0; i < expected[row].length - 1; i++) {
+            result += expected[row][i] + ", ";
+        }
+        result += expected[row][expected[row].length-1] + "]";
+        return result;
     }
 
 
