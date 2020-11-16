@@ -34,9 +34,45 @@ public class Problem3Test {
 
     @Test
     public void testInOrderTraverse() {
-        // homework
-        // to verify inOrderTraverse(TreeNode<Integer> node)
+        List<BSTTestCase<Integer>> testCases = getBSTTestCases();
+
+        int[][] expectedd = {
+                {1},
+                {1},
+                {1},
+                {1, 2},
+                {1, 2},
+                {1, 2},
+                {2, 4, 6},
+                {2, 4, 6},
+                {2, 4, 6},
+                {2, 4, 6},
+                {3, 5, 6, 9, 10, 13},
+                {3, 5, 6, 9, 10, 13},
+                {3, 5, 6, 9, 10, 13},
+                {3, 5, 6, 9, 10, 13},
+                {1},
+                {1},
+                {1},
+                {1}
+        };
+        for (int i = 0; i < testCases.size(); i++) {
+            BSTTestCase<Integer> testCase = testCases.get(i);
+            List<Integer> actual = inOrderTraverse(testCase.tree);
+            String expected = listBoi(expectedd, i);
+            assertEquals(expected, actual.toString());
+        }
     }
+
+    private String listBoi(int[][] expected, int row) {
+        String result = "[";
+        for (int i = 0; i < expected[row].length - 1; i++) {
+            result += expected[row][i] + ", ";
+        }
+        result += expected[row][expected[row].length-1] + "]";
+        return result;
+    }
+
 
     private static List<Integer> inOrderTraverse(TreeNode<Integer> node) {
         List<Integer> result = new ArrayList<>();
@@ -146,9 +182,13 @@ public class Problem3Test {
         //    N   N
         // homework
         // what problem can you see for insertInBst from this test case?
-        // answer:
+        // answer: all of the inserted values are greater then 1, so then all the insert values will be on the right side and the left
+        // side will not have anything. Thus making a unbalanced binary search tree, which is not good because a BST helps us
+        // ignore irrelevant values, which helps decrease the amount of comparisons programs have to make to find data.
+        // but with a unbalanced BST it increases the amount of comparisons programs have to make.
         // discuss how you would solve it in a comment below
-        // answer:
+        // answer: A solution to have numbers on the left hand side would to insert values that are less then 1, like 0.
+        // or to make the root bigger, to create a balanced binary search tree.
         root = new TreeNode<>(1);
         testCases.add(new BSTTestCase<>(root, 2, Arrays.asList(1, 2)));
         testCases.add(new BSTTestCase<>(root, 3, Arrays.asList(1, 2, 3)));
